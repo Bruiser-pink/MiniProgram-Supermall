@@ -1,0 +1,7 @@
+<!--pages/home/childCpn/recommendItem.wxml-->
+<block>
+  <view>
+    <image src="{{iteminfo.image}}"  class="image" bindload="imageLoad"></image>
+  </view>
+  <view class="title">{{iteminfo.title}}</view>
+</block>

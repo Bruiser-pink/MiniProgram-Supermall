@@ -1,66 +1,127 @@
 // pages/home.js
+import {getMultiData, getGoodsData} from "../../service/home_network"
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    banners: [],
+    recommend: [],
+    tabcontroltitles: ["流行","新款","精选"],
+    goods: {
+      "pop" : {page: 0, list: []},
+      "new" : {page: 0, list: []},
+      "sell" : {page: 0, list: []}
+    },
+    currentType: "pop",
+    backTopShow: false,
+    showTabControl: false,
+    tabScrollTop: 0,
+    topPosition: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    //获取轮播图和推荐数据
+    this._getMultiData();
+    this._getGoodsData("pop");
+    this._getGoodsData("new");
+    this._getGoodsData("sell");
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  //将获取轮播图和推荐数据抽成一个方法
+  _getMultiData() {
+    getMultiData().then((res) => {
+      const data = res.data.data;
+      this.setData({
+        banners: data.banner.list,
+        recommend: data.recommend.list,
+      })
+    }).catch((err) => {
+      console.log("轮播图数据请求失败");
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  _getGoodsData(type) {
+    //1.获取页码
+    const page = this.data.goods[type].page + 1 ;
+    //发送网络请求
+    getGoodsData(type,page).then((res) => {
+      const list = res.data.data.list;
+      //使用一个temp数组来保存原来的data里的list的数据
+      const oldList = this.data.goods[type].list;
+      //将新请求到的数据push到temp数组中
+      oldList.push(...list);
+      // 通过es6语法将变量拼接到字符串中
+      const typeKey = `goods.${type}.list`;
+      const pageKey = `goods.${type}.page`;
+      //将temp数据设置到type对应的list中
+      this.setData({
+        [typeKey]: oldList,
+        [pageKey]: page + 1
+      })
+    }).catch( err => {
+      console.log("获取货物信息失败");
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  handleTabClick(event) {
+    const index = event.detail.index;
+    switch(index) {
+      case 0: {
+        this.setData({
+          currentType: 'pop'
+        })
+        break;
+      }
+      case 1: {
+        this.setData({
+          currentType: 'new'
+        })
+        break;
+      }
+      case 2: {
+        this.setData({
+          currentType: 'sell'
+        })
+        break;
+      }
+    }
+    //获取两个不同的tabcontrol，使用其组件定义的方法修改currentIndex
+    this.selectComponent('.tab-control').setCurrentIndex(event.detail.index)
+    this.selectComponent('.tab-control-temp').setCurrentIndex(event.detail.index)
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //当图片加载完成后执行此函数
+  imageload() {
+    //使用此方法获取某个组件距离顶部的高度
+    wx.createSelectorQuery().select('#tabcontrol').boundingClientRect(rect => {
+      this.data.tabScrollTop = rect.top;
+    }).exec();
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //监听页面触发到底部后加载更多
+  loadingMore() {
+    console.log(this.data.currentType);
+    
+    this._getGoodsData(this.data.currentType);
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  backtop() {
+    this.setData({
+      backTopShow: false,
+      topPosition: 0,
+      tabControlTop: 0
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handlescroll(event) {
+    const scrollTop = event.detail.scrollTop;
+    const flag = scrollTop>=1000;
+    if(flag!=this.data.backTopShow){
+      this.setData({
+        backTopShow: flag,
+      })
+    }
+    // 修改showTabControl属性
+    //如果滚动距离大于距离顶部高度，让showTabControl为show
+    const show = scrollTop >= this.data.tabScrollTop;
+    if(show){
+      this.setData({
+        showTabControl: show
+      })
+    }else{
+      this.setData({
+        showTabControl: show
+      })
+    }
   }
 })

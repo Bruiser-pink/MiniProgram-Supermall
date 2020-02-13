@@ -1,0 +1,10 @@
+/* pages/home/childCpn/recommendItem.wxss */
+.image {
+  height: 160rpx;
+  width: 160rpx;
+}
+.title {
+  margin-top: 10rpx;
+  font-size: 32rpx;
+  color: #919191;
+}

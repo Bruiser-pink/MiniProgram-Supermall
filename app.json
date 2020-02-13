@@ -6,10 +6,8 @@
     "pages/profile/profile"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#ff5777"
   },
   "tabBar": {
     "selectedColor": "#ff5777",
