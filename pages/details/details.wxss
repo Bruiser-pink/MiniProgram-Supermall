@@ -1,0 +1,8 @@
+/* pages/details/details.wxss */
+.detail {
+  height: calc(100% - 120rpx);
+}
+
+.swiperheight {
+  height: 800rpx;
+}

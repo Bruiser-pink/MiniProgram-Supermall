@@ -1,19 +1,19 @@
-// pages/home/childCpns/swiper.js
+// pages/details/childCpn/comment/comment.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
+    commentInfo: {
+      type: Object
     }
   },
+
   /**
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**
@@ -21,6 +21,5 @@ Component({
    */
   methods: {
 
-  },
-  externalClasses:["swiperheight"]
+  }
 })

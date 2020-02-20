@@ -1,19 +1,20 @@
-// pages/home/childCpns/swiper.js
+// pages/details/childCpn/baseInfo/baseInfo.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
+    baseInfo: {
+      type: Object,
+      value: {}
     }
   },
+
   /**
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**
@@ -21,6 +22,5 @@ Component({
    */
   methods: {
 
-  },
-  externalClasses:["swiperheight"]
+  }
 })

@@ -1,19 +1,19 @@
-// pages/home/childCpns/swiper.js
+// pages/details/childCpn/param-info/param-info.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
+    paramInfo: {
+      type: Object
     }
   },
+
   /**
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**
@@ -21,6 +21,5 @@ Component({
    */
   methods: {
 
-  },
-  externalClasses:["swiperheight"]
+  }
 })

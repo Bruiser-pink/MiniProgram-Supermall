@@ -53,6 +53,10 @@ Page({
         [typeKey]: oldList,
         [pageKey]: page + 1
       })
+      //数据获取成功后，让加载弹窗消失
+      wx.hideLoading({
+        
+      })
     }).catch( err => {
       console.log("获取货物信息失败");
     })
@@ -92,8 +96,10 @@ Page({
   },
   //监听页面触发到底部后加载更多
   loadingMore() {
-    console.log(this.data.currentType);
-    
+    //出现提示加载
+    wx.showLoading({
+      title: '数据加载中...',
+    })
     this._getGoodsData(this.data.currentType);
   },
   backtop() {

@@ -13,3 +13,6 @@
   z-index: 9;
   background: #fff;
 }
+.swiperheight {
+  height: 380rpx;
+}

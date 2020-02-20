@@ -1,19 +1,19 @@
-// pages/home/childCpns/swiper.js
+// pages/details/childCpn/recomment/recomment.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    list: {
-      type: Array,
-      value: []
+    recommends: {
+      type: Array
     }
   },
+
   /**
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**
@@ -21,6 +21,5 @@ Component({
    */
   methods: {
 
-  },
-  externalClasses:["swiperheight"]
+  }
 })
