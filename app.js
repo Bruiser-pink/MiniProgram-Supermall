@@ -33,7 +33,27 @@ App({
       }
     })
   },
+  //此方法为：点击加入购物车按钮后，在detail页面获取加入商品的数据，判断该商品是否已存在，然后选择数量+1或新建item
+  addcart(obj) {
+    // 1.判断是否已经添加进来
+    const oldInfo = this.globalData.cartList.find((item) => item.iid === obj.iid)
+    if(oldInfo) {
+      oldInfo.count++;
+    }else{
+      //商品数量为1
+      obj.count = 1
+      //默认商品添加进去为被选中
+      obj.checked = true
+      //将商品加入购物车数组
+      this.globalData.cartList.push(obj)
+    }
+    // 2.购物车回调
+    if (this.addCartCallback) {
+      this.addCartCallback()
+    }
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    cartList: []
   }
 })

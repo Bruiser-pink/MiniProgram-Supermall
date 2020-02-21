@@ -1,9 +1,7 @@
 import request from "./network"
-
-const baseURL = "http://123.207.32.32:8000/api/hy"
 export function getDetailData(iid) {
   return request({
-    url: baseURL + "/detail",
+    url: "/detail",
     data: {
       iid: iid
     }
@@ -11,7 +9,7 @@ export function getDetailData(iid) {
 }
 export function getRecommends() {
   return request({
-    url: baseURL+'/recommend'
+    url: '/recommend'
   })
 }
 //存储基础数据的类

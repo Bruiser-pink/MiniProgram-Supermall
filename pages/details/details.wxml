@@ -1,10 +1,13 @@
 <!--pages/details/details.wxml-->
-<scroll-view class='detail' scroll-y>
-  <w-swiper list="{{topImages}}" class="swiper" swiperheight="swiperheight" />
-  <w-baseInfo baseInfo="{{baseInfo}}" />
-  <w-shop-info shopInfo="{{shopInfo}}" />
-  <w-detail-info detailInfo="{{detailInfo}}" />
-  <w-param-info paramInfo="{{paramInfo}}" />
-  <w-comment  commentInfo="{{commentInfo}}" />
-  <w-recommend  recommends="{{recommends}}" />
-</scroll-view>
+<view class="detail">
+  <scroll-view class='detail-content' scroll-y>
+    <w-swiper list="{{topImages}}" class="swiper" swiperheight="swiperheight" />
+    <w-baseInfo baseInfo="{{baseInfo}}" />
+    <w-shop-info shopInfo="{{shopInfo}}" />
+    <w-detail-info detailInfo="{{detailInfo}}" />
+    <w-param-info paramInfo="{{paramInfo}}" />
+    <w-comment  commentInfo="{{commentInfo}}" />
+    <w-recommend  recommends="{{recommends}}" />
+  </scroll-view>
+  <w-bottom-bar bind:addcart="addcart" />
+</view>

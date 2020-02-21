@@ -6,7 +6,8 @@
     "w-detail-info": "./childCpn/detailInfo/detailInfo",
     "w-param-info": "./childCpn/param-info/param-info",
     "w-comment": "./childCpn/comment/comment",
-    "w-recommend": "./childCpn/recommend/recommend"
+    "w-recommend": "./childCpn/recommend/recommend",
+    "w-bottom-bar": "./childCpn/bottom-bar/bottom-bar"
   },
   "navigationBarTitleText": "商品详情"
 }

@@ -1,5 +1,8 @@
 // pages/details/details.js
 import {getDetailData,GoodsBaseInfo,ShopInfo,ParamInfo,getRecommends} from "../../service/detail_network"
+
+//获取app
+const app = getApp();
 Page({
   data: {
     iid: "",
@@ -57,13 +60,31 @@ Page({
   },
   _getRecommends() {
     getRecommends().then(res => {
-      console.log(res)
       const data = res.data.data;
       this.setData({
         recommends: data.list
       })
     }).catch(err => {
       console.log("获取detail推荐数据失败"+err);
+    })
+  },
+  //监听到加入购物车被点击事件后
+  addcart() {
+    //获取商品当前商品数据
+    const cartItemInfo = {};
+    cartItemInfo.iid = this.data.iid;
+    cartItemInfo.images = this.data.topImages[0];
+    cartItemInfo.title = this.data.baseInfo.title;
+    cartItemInfo.desc = this.data.baseInfo.desc;
+    cartItemInfo.price = this.data.baseInfo.realPrice;
+
+    //将当前商品数据发送给app
+    app.addcart(cartItemInfo);
+    //显示成功弹窗
+    wx.showToast({
+      title: '加入购物车成功',
+      duration: 1000,
+      mask: true
     })
   }
 })

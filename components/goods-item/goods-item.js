@@ -27,7 +27,6 @@ Component({
         //保留原页面，根据iid跳转到对应detail页面
         url: '/pages/details/details?iid=' + iid,
       })
-      console.log(iid);
     } 
   }
 })
