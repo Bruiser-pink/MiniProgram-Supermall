@@ -13,4 +13,5 @@
 .active {
   border-left: 3px solid #F55777 ;
   border-right: none;
+  color: #F55777 ;
 }

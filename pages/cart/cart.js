@@ -75,7 +75,7 @@ Page({
     for(let item of this.data.cartList) {
       //如果遍历到的商品被选中
       if(item.checked) {
-        counter++;
+        counter += item.count;
         price += item.price*item.count;
       }
     }
