@@ -1,19 +1,17 @@
-// components/backtop/backtop.js
+// pages/profile/childCpns/w-header/w-header.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    ishidden: {
-      type: Boolean,
-    }
+
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**

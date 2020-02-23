@@ -1,11 +1,11 @@
-// components/backtop/backtop.js
+// pages/profile/childCpns/w-list-view/w-list-view.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    ishidden: {
-      type: Boolean,
+    infos: {
+      type: Array
     }
   },
 
@@ -13,7 +13,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**

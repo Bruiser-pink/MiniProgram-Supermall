@@ -1,0 +1,16 @@
+/* pages/category/childCpn/menu.wxss */
+.menu {
+  height: 100vh;
+}
+.category-item {
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+  text-align: center;
+  height: 95rpx;
+  line-height: 95rpx;
+  border-left: 3px solid #fff ;
+}
+.active {
+  border-left: 3px solid #F55777 ;
+  border-right: none;
+}

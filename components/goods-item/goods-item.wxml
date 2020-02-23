@@ -1,6 +1,6 @@
 <!--components/goods-item/goods-item.wxml-->
 <view class="goods-item" bindtap="seeDetail">
-  <image class="image" src="{{iteminfo.show.img || iteminfo.image}}" mode="widthFix"></image>
+  <image class="image" src="{{iteminfo.show.img || iteminfo.image || iteminfo.img}}" mode="widthFix"></image>
   <view class="desc-info">
     <view class="title">{{iteminfo.title}}</view>
     <view class="info">
